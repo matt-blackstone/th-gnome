@@ -10,6 +10,9 @@ Configs for prometheus and MQTT will be rpovided. there seems to be a bug in esp
 Flash instructions for prometheus. Use https://web.esphome.io/ Plug  device to usb click connect and select the correct com port. Flash the correct bin file.
 
 Cost: For a run of 10 boards including assembly except for the XIA module which will need to be purchased seperatly and hand soldered.
+
 JLCPCB PCB and assembly with shipping 126.55
+
 10 Pcs Seeduino esp32c3 $89 on amazon can be found cheaper. Ensure antennas are included as they are required.
+
 Total $216 per 10
