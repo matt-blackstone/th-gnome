@@ -1,0 +1,119 @@
+substitutions:
+  # Default name
+  name: "th-gnome"
+  # Default friendly name
+  friendly_name: "th-gnome"
+  # Define OTA password for use with esphome builder
+  ota_secret: "changeme"
+  # Define API key if using esphome API
+  esp_api_key: "changme"
+  # Define MQTT Broker hostname or IP
+  mqtt_broker: "10.0.0.2"
+  # Define MQTT username
+  mqtt_username: "mqttuser"
+  # Define MQTT password
+  mqtt_password: "changme"
+  # Define logging level: NONE, ERROR, WARN, INFO, DEBUG (Default), VERBOSE, VERY_VERBOSE
+  log_level: "DEBUG"
+  # Define the watchdog timeout or disable by setting to 0 (Default 15min, may use options from https://esphome.io/guides/configuration-types#time)
+  wd_timeout: "15min"
+  # Description as appears in ESPHome & top of webserver page
+  device_description: "Temperature humidity and pressure sensor"
+  # Project Name
+  project_name: "matt-blackstone.th-gnome"
+  # Projection version denotes the release version of the yaml file, allowing checking of deployed vs latest version
+  project_version: "v1.0"
+  
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  min_version: 2024.11.0
+  name_add_mac_suffix: True
+  project:
+    name: "${project_name}"
+    version: "${project_version}"
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+  level: ${log_level}
+
+wifi:
+  # This spawns an AP with the device name and mac address with no password.
+  ap: {}
+  
+captive_portal:
+  
+# Uncomment to use with Home esphome api
+#api:
+#  encryption:
+#    key: ${esp_api_key}
+#  reboot_timeout: ${wd_timeout}
+
+ota:
+  - platform: esphome
+    password: ${ota_secret}
+
+web_server:
+  port: 80
+
+mqtt:
+  broker: ${mqtt_broker}
+  username: ${mqtt_user}
+  password: ${mqtt_password} 
+
+i2c:
+  sda: GPIO06
+  scl: GPIO07
+  scan: true
+  id: bus_a
+
+status_led:
+  id: led
+  pin: GPIO04
+
+sensor:
+  - platform: bme280_i2c
+    address: 0x76
+    temperature:
+      name: "BME280 Temperature"
+      oversampling: 1x
+    pressure:
+      name: "BME280 Pressure"
+      oversampling: 1x
+      accuracy_decimals: 4
+    humidity:
+      name: "BME280 Humidity"
+      oversampling: 1x
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: "IP Address"
+      entity_category: diagnostic
+    ssid:
+      name: "Connected SSID"
+      entity_category: diagnostic
+    bssid: 
+      name: "Connected BSSID"
+      entity_category: diagnostic
+    mac_address:
+      name: "Mac Address"
+      entity_category: diagnostic
+      
+  - platform: uptime
+    name: "Uptime"
+    id: sensor_uptime
+    update_interval: 300s
+    entity_category: diagnostic
+
+button:
+  - platform: restart
+    name: Restart_esp
+    id: restart_esp
+    entity_category: config
+    internal: false
