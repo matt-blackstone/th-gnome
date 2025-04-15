@@ -40,7 +40,7 @@ esp32:
 
 # Enable logging
 logger:
-  level: ${log_level}
+  level: "${log_level}"
 
 wifi:
   # This spawns an AP with the device name and mac address with no password.
@@ -56,15 +56,15 @@ captive_portal:
 
 ota:
   - platform: esphome
-    password: ${ota_secret}
+    password: "${ota_secret}"
 
 web_server:
   port: 80
 
 mqtt:
-  broker: ${mqtt_broker}
-  username: ${mqtt_user}
-  password: ${mqtt_password} 
+  broker: "${mqtt_broker}"
+  username: "${mqtt_user}"
+  password: "${mqtt_password}"
 
 i2c:
   sda: GPIO06
