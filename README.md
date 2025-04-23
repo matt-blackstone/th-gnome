@@ -15,6 +15,8 @@ A precompiled firmware image for prometheus is included in this repository since
 
 Flash instructions for prometheus. Use https://web.esphome.io/ Plug device to usb click connect and select the correct com port. Flash the bin file.
 
+On boot the device will create an open WiFi connection with no password. Once connected to this you will be automatically directed to a page to configure your wifi details.
+
 Cost: For a run of 10 boards including assembly except for the XIAO module which will need to be purchased seperatly and hand soldered.
 
 JLCPCB PCB and assembly with shipping 126.55
@@ -23,4 +25,5 @@ JLCPCB PCB and assembly with shipping 126.55
 
 Total $216 per 10
 
+<img src="finished board.jpg" width="50%" height="20%">
 <img src="Screenshot 2025-04-07 215142.png" width="50%" height="20%">
