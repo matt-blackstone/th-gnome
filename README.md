@@ -1,5 +1,5 @@
 # th-gnome
-A simple temperature and humidity sensor platform built on esphome https://esphome.io/index.html using a SeedStudio XIAO esp32-c3 RISC-V MCU and Bosch BME280 sensor.
+A simple IOT temperature humidity and pressure sensor platform built on esphome for Prometheus https://esphome.io/index.html using a SeedStudio XIAO esp32-c3 RISC-V MCU and Bosch BME280 sensor.
 
 https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html
 
@@ -13,7 +13,7 @@ Configs for prometheus and MQTT will be povided. There seems to be a bug in esph
 
 A precompiled firmware image for prometheus is included in this repository since there is no customization required.
 
-Flash instructions for prometheus. Use https://web.esphome.io/ Plug device to usb click connect and select the correct com port. Flash the bin file.
+Flash instructions for Prometheus. Use https://web.esphome.io/ Plug device to usb click connect and select the correct com port. Flash the bin file.
 
 On boot the device will create an open WiFi connection with no password. Once connected to this you will be automatically directed to a page to configure your wifi details.
 
